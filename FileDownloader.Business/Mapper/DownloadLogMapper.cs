@@ -22,7 +22,7 @@ namespace FileDownloader.Business.Mapper
             if (e.State == DownloadState.Succeeded)
             {
                 log.IsFileBig = (e.BytesTotal / 1024) > configuration.GetBigFileSizeThresholdInKb();
-                log.IsSpeedSlow = e.DownloadSpeedInKiloBytesPerSecond > configuration.GetSlowSpeedThresholdInKBps();
+                log.IsSpeedSlow = e.DownloadSpeedInKiloBytesPerSecond < configuration.GetSlowSpeedThresholdInKBps();
             }
 
             return log;
